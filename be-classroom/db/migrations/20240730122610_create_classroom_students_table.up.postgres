@@ -1,0 +1,15 @@
+CREATE TABLE classroom_students (
+    id SERIAL PRIMARY KEY,
+    classroom_id INT NOT NULL,
+    student_id INT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_classroom
+        FOREIGN KEY(classroom_id) 
+        REFERENCES classrooms(id)
+        ON DELETE CASCADE,
+    CONSTRAINT fk_student
+        FOREIGN KEY(student_id) 
+        REFERENCES students(id)
+        ON DELETE CASCADE
+);
